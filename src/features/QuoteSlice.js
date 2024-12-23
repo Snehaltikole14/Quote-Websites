@@ -27,10 +27,10 @@ const quoteSlice = createSlice({
     quotes: [],
     quote: {},
     status: "idle", // "loading" "failed" "succeseded"
-    error: "",
+    error: "null",
   },
   reducers: {
-    
+   
   },
   extraReducers: (builder) => {
     builder
@@ -43,10 +43,20 @@ const quoteSlice = createSlice({
       })
       .addCase(getQuoteById.rejected, (state, action) => {
         console.log("Failed");
+      })
+      .addCase(getQuotes.pending, (state, action) => {
+         state.status = "loading";
+        console.log("Request going on");
+      })
+      .addCase(getQuotes.fulfilled, (state, action) => {
+         state.status = "not-loading";
+        state.quotes = action.payload;
+      })
+      .addCase(getQuotes.rejected, () => {
+        state.status ="Not Found"
+        console.log("Request going on");
       });
   },
 });
-
-
 
 export const quotesReducer = quoteSlice.reducer;

@@ -7,17 +7,19 @@ import { getQuoteById,getQuotes } from "./features/QuoteSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Quotewithid from "./Pages/Quotewithid";
+import Notfound from "./Pages/Notfound";
 
 
 function App(){
   return (
     <div>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/"element={<Home/>} />
-      <Route path="/quoteid" element={<Quotewithid/>} />
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quoteid" element={<Quotewithid />} />
+          <Route path="/notfound" element={<Notfound />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
